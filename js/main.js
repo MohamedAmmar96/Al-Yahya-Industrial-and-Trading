@@ -6,7 +6,21 @@ $(window).on('load', function() {
             $("body").removeClass("overflow")
         });
 })
-
+$(window).scroll(function() {
+    if (($(this).scrollTop() >= 30)) {
+        $(".mo-header").addClass("fixed")
+        $(".logo-box").addClass("scroll-width")
+        $(".lang-name").addClass("scroll-color")
+        if ($(window).width() >= 992) {
+            $(".nav-li .nav-link").addClass("scroll-color")
+        }
+    } else {
+        $(".mo-header").removeClass("fixed");
+        $(".logo-box").removeClass("scroll-width")
+        $(".nav-li .nav-link").removeClass("scroll-color")
+        $(".lang-name").removeClass("scroll-color")
+    }
+});
 
 // // Scroll To Top Button 
 // var scrollButton = $(".scroll-top");
@@ -18,140 +32,164 @@ $(window).on('load', function() {
 //     $("html,body").animate({ scrollTop: 0 }, 600);
 // });
 
-var wow = new WOW();
-wow.init();
+// var wow = new WOW();
+// wow.init();
+
+// init Swiper:
+const swiper = new Swiper();
 
 $(document).ready(function() {
 
-
-    //Main Slider Carousel
-    $('.main-slider .owl-carousel').owlCarousel({
+    var mySwiper1 = new Swiper('.main-slider .swiper-container', {
+        effect: 'coverflow',
+        direction: 'horizontal',
         loop: true,
-        autoplay: true,
-        autoplayTimeout: 4000,
-        smartSpeed: 1200,
-        rtl: true,
-        margin: 20,
-        navText: ["<span class='lnr lnr-chevron-right'></span>", "<span class='lnr lnr-chevron-left'></span>"],
-        responsiveClass: true,
-        nav: true,
-        dots: true,
-        responsive: {
-            0: {
-                items: 1,
-            },
-            768: {
-                items: 1,
-            },
-            992: {
-                items: 1,
-            },
-            1200: {
-                items: 1,
-            }
+        speed: 1700,
+        spaceBetween: 30,
+        slidesPerView: 1,
+        updateOnWindowResize: true,
+        // freeMode: true,
+        autoplay: {
+            delay: 4000,
+        },
+        pagination: {
+            el: '.main-slider .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.main-slider .swiper-button-next',
+            prevEl: '.main-slider .swiper-button-prev',
+        },
+        breakpoints: {
+            0: { slidesPerView: 1, },
+            500: { slidesPerView: 1, },
+            768: { slidesPerView: 1, },
+            992: { slidesPerView: 1, },
+            1200: { slidesPerView: 1, },
         }
-    });
+    })
 
     //This is to make Clients slider in small screens
     if ($(window).width() <= 991) {
-        $(".clients .clients-box").addClass("owl-carousel owl-theme");
-        $(".clients-box .client").removeClass("owl-carousel");
-        $('.clients .owl-carousel').owlCarousel({
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 4000,
-            smartSpeed: 1200,
-            margin: 20,
-            rtl: true,
-            responsiveClass: true,
-            nav: false,
-            dots: true,
-            dotsEach: true,
-            responsive: {
-                0: {
-                    items: 2
-                },
-                550: {
-                    items: 3
-                }
-            }
-        })
-    } else {
-        $(".clients .clients-box").removeClass("owl-carousel");
-        $(".clients-box .client").removeClass("owl-carousel");
-    };
-
-    //This is to make News Section slider in small screens
-    if ($(window).width() <= 991) {
-        $(".my-news .news-box").addClass("owl-carousel owl-theme");
-        $(".news-box .news").removeClass("owl-carousel");
-        $('.my-news .owl-carousel').owlCarousel({
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 4000,
-            smartSpeed: 1200,
-            margin: 0,
-            rtl: true,
-            responsiveClass: true,
-            nav: false,
-            dots: true,
-            dotsEach: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                550: {
-                    items: 2
-
-                }
-            }
-        })
-    } else {
-        $(".my-news .news-box").removeClass("owl-carousel");
-        $(".news-box .news").removeClass("owl-carousel");
-    };
-
-    // Footer Section Start --------------------------------------------------------------------------------------------------------------------
-    // To Toggle Between Footer Slide Menus
-    if ($(window).width() >= 992) {
-        $(".slide-list").addClass("show")
-        $('.footer-link').on('click', function(e) {
-            e.stopPropagation();
-        });
+        $(".my-clients").addClass("swiper-container")
+        $(".my-clients").removeClass("clients-box")
+        $(".client").addClass("swiper-slide")
+        $(".client.swiper-slide").wrapAll("<div class='swiper-wrapper'></div>")
     }
-    //This is To Change between footer collapse link ----------------------------------------------------------------
-    // First Collapse ---------------------------
-    $(".footer-heading .footer-link").click(function() {
-        var x = $(".slide-list")
-        if (x.hasClass("collapse")) {
-            $(".footer-heading .footer-link").addClass("rotate")
-            $(".footer-heading .footer-link").removeClass("rotate-reverse")
-        }
+    var mySwiper2 = new Swiper('.clients .swiper-container', {
+        direction: 'horizontal',
+        loop: true,
+        spaceBetween: 15,
+        updateOnWindowResize: true,
+        // autoplay: false,
+        allowTouchMove: false,
+        breakpoints: {
+            0: {
+                slidesPerView: 2,
+                spaceBetween: 15,
+                allowTouchMove: true,
+                autoplay: true,
+            },
+            500: {
+                slidesPerView: 2,
+                spaceBetween: 15,
+                allowTouchMove: true,
+                autoplay: {
+                    delay: 4000,
+                }
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 15,
+                allowTouchMove: true,
+                autoplay: {
+                    delay: 4000,
+                }
+            },
+            992: {
+                slidesPerView: 4,
+                spaceBetween: 15,
+            },
+            1200: {
+                slidesPerView: 5,
+                spaceBetween: 15,
+            },
+        },
+        pagination: {
+            el: '.clients .swiper-pagination',
+            clickable: true,
+        },
     });
-    $(".footer-heading .footer-link").click(function() {
-        var x = $(".slide-list")
-        if (x.hasClass("show")) {
-            $(".footer-heading .footer-link").removeClass("rotate")
-            $(".footer-heading .footer-link").addClass("rotate-reverse")
-        }
+
+
+    var mySwiper3 = new Swiper('.my-news .swiper-container', {
+        direction: 'horizontal',
+        loop: true,
+        spaceBetween: 30,
+        updateOnWindowResize: true,
+        autoplay: false,
+        allowTouchMove: false,
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                allowTouchMove: true,
+                autoplay: true,
+                autoplay: {
+                    delay: 2000,
+                }
+            },
+            500: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+                allowTouchMove: true,
+                autoplay: true,
+                autoplay: {
+                    delay: 4000,
+                }
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+                allowTouchMove: true,
+                autoplay: true,
+                autoplay: {
+                    delay: 4000,
+                }
+            },
+            992: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            1200: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        },
+        pagination: {
+            el: '.my-news .swiper-pagination',
+            clickable: true,
+        },
     });
 
 
     //This is to Open Side Menu in Small Screens
     $(".menu").click(function() {
-        $("body").addClass("overflow")
-        $(".menu .menu-icon").removeClass("open-menu")
-        $(".menu .menu-icon").addClass("close-menu")
-        $(".mo-nav").addClass("menu-open");
-        $(".overlay-box2").fadeIn(500);
+        $("body").toggleClass("overflow")
+        $(".menu .menu-icon").toggleClass("open-menu")
+        $(".menu .menu-icon").toggleClass("close-menu")
+        $(".mo-header").toggleClass("white-back")
+            // $(".lang-name").toggleClass("scroll-color")
+        $(".mo-nav").slideToggle(300);
+        // $(".overlay-box2").fadeIn(500);
     });
-    $(".close,.overlay-box2").click(function() {
-        $("body").removeClass("overflow")
-        $(".menu .menu-icon").addClass("open-menu")
-        $(".menu .menu-icon").removeClass("close-menu")
-        $(".mo-nav").removeClass("menu-open");
-        $(".overlay-box2").fadeOut(500);
-    });
+    // $(".close,.overlay-box2").click(function() {
+    //     $("body").removeClass("overflow")
+    //     $(".menu .menu-icon").addClass("open-menu")
+    //     $(".menu .menu-icon").removeClass("close-menu")
+    //     $(".mo-nav").removeClass("menu-open");
+    //     $(".overlay-box2").fadeOut(500);
+    // });
 
 
     if ($(window).width() <= 991) {
@@ -168,10 +206,10 @@ $(document).ready(function() {
         });
     }
 
-    if ($(window).width() <= 991) {
-        $(".lang-name").click(function() {
-            $(this).toggleClass("rotate")
-            $(".lang-list").slideToggle(300);
-        });
-    }
+    // if ($(window).width() <= 991) {
+    //     $(".lang-name").click(function() {
+    //         $(this).toggleClass("rotate")
+    //         $(".lang-list").slideToggle(300);
+    //     });
+    // }
 });
