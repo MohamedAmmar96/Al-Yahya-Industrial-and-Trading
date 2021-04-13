@@ -22,6 +22,7 @@ $(window).scroll(function() {
     }
 });
 
+
 // // Scroll To Top Button 
 // var scrollButton = $(".scroll-top");
 // $(window).scroll(function() {
@@ -179,7 +180,7 @@ $(document).ready(function() {
         $(".menu .menu-icon").toggleClass("open-menu")
         $(".menu .menu-icon").toggleClass("close-menu")
         $(".mo-header").toggleClass("white-back")
-            // $(".lang-name").toggleClass("scroll-color")
+        $(".lang-name").toggleClass("scroll-black")
         $(".mo-nav").slideToggle(300);
         // $(".overlay-box2").fadeIn(500);
     });

@@ -416,6 +416,10 @@
             color: var(--black);
         }
         
+        .scroll-black {
+            color: var(--black);
+        }
+        
         .lang-name:hover {
             color: var(--main);
         }
@@ -1689,9 +1693,6 @@
                 order: 2;
                 padding-inline-end: 15px;
                 padding-bottom: 10px;
-            }
-            .lang-name {
-                color: var(--main);
             }
             .contact-us {
                 display: none;
