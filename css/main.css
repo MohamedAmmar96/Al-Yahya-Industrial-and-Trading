@@ -1939,7 +1939,7 @@
                 margin: 0 auto;
             }
             .services {
-                padding: 70px 0 40px;
+                padding: 70px 0 50px;
                 /* display: none; */
             }
             .services .sections-title {
@@ -1967,7 +1967,7 @@
                 font-size: 17px;
             }
             .products {
-                padding: 40px 0 30px;
+                padding: 40px 0;
             }
             .products-box {
                 flex-wrap: wrap;
@@ -2007,7 +2007,7 @@
                 -o-transform: translateX(50%);
             }
             .big-section {
-                padding: 20px 0 70px;
+                padding: 50px 0 80px;
             }
             .big-desc {
                 font-size: 28px;
@@ -2020,7 +2020,7 @@
                 max-width: 100%;
             }
             .clients {
-                padding: 60px 0 30px;
+                padding: 70px 0 40px;
             }
             .clients-box {
                 margin-bottom: 20px;
@@ -2030,7 +2030,7 @@
                 height: 100%;
             }
             .my-news {
-                padding: 30px 0 40px;
+                padding: 50px 0;
             }
             .news-head {
                 justify-content: center;
